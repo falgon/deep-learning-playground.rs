@@ -4,10 +4,8 @@ version = "0.1.0"
 authors = ["roki <falgon53@yahoo.co.jp>"]
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [package.metadata.docs.rs]
-rustdoc-args = ["--html-in-header", "assets/katex-header.html"]
+rustdoc-args = ["--html-in-header", ".assets/katex-header.html"]
 
 [dependencies]
 num = "0.2.1"

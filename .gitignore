@@ -1,5 +1,4 @@
 /target
 **/*.rs.bk
-.cargo
 .weight_data
 .mnist

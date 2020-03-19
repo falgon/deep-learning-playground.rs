@@ -1,0 +1,41 @@
+language: rust
+dist: bionic
+os: linux
+rust:
+  - nightly
+cache: 
+  - cargo
+env:
+  global:
+    secure: OuYxFWI28DaELdsg6aLawv4h44s24Ml0lAi/CmUkuOOE3LlG8Xneu3qXiHGYQfNHroN4dkBejNFVtXLhlja60cvqeA6uSIhzMhU4jRLWYbp0DfWbtatXsekM+pWZ/sJL15wX88dvhPO6dRcXho3qeKDyXIjG+5FD65jgeR5TSoM5jRG6+weGtT0V4REIrhYjdAiRpKYagLIbTuJWF7UtKQ4+W1XmzVsUpFJrEtPsFA8/jlfZ2TesuBLNbHYY6kS0rLb7hn2PzeFRq+F6XZrwE9bU6T2+rpueAcj+6SVpQDu72f/Y214Z91a7kG/VZXx5grFegzwwXTOoXxiRY9uj/Rcu9n75ZhryaE5AnSBrXR58uaAZHRNlmALl5KnsNx0inzm3ZAfCkKE0HDbkYUNvOpOaldFNMXXC5kKtnttGLp8aG26DoDxwu/4LuhgOEUpq4y3Z9PSsYi8iOidPmYezuRxnsjqEAa+EFL1rWHUKns2zCoLEtZWIHxn1D3UJ7W3yncgKunvN+D7puuepexCfawDpbILmwYCOWwJr48gfGpkK25R6RAczKElF5QcuyiJ5HHrwwRkEDpmgPbjzUNF/n7ikcdN3QxTNza4XEoD63M1hWCOGuVvbWLX3jPaVDYhsvEbGDRYYGyPImuMC3qVA77X+L7f2hXnbFnHG2TN/bSA=
+
+before_install:
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\nIdentityFile ~/.ssh/deploy.key\n" >> ~/.ssh/config
+  - openssl aes-256-cbc -pass "pass:$SERVER_KEY" -pbkdf2 -in .travis/deploy_key.enc -d -a -out deploy.key
+  - cp deploy.key ~/.ssh/
+  - chmod 600 ~/.ssh/deploy.key
+  - git config --global user.email "falgon53@yahoo.co.jp"
+  - git config --global user.name "falgon"
+  - git config --global core.autocrlf "input"
+
+install:
+  - pip install -r .travis/requirements.txt --user
+
+jobs:
+    include:
+        - stage: Test
+          script:
+              - cargo test
+        - stage: Build
+          script:
+              - cargo build
+        - stage: Deploy gh-pages
+          script:
+              - cargo doc --no-deps
+              - echo "<meta http-equiv=refresh content=0;url=deep_learning_playground/index.html>" > target/doc/index.html 
+              - ghp-import -m "by Travis CI (JOB $TRAVIS_JOB_NUMBER)" -n target/doc
+              - git push -qf git@github.com:falgon/deep-learning-playground.rs.git gh-pages
+              
+branches:
+  except:
+    - gh-pages
