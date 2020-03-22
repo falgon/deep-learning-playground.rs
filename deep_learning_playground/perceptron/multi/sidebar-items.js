@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["xor_perceptron","`xor_perceptron` generates the XOR function. Let \\(p\\) and \\(q\\) are logical variables, `xor_perceptron` generates the function which satisfies the following truth table."]]});

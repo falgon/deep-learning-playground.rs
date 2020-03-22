@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["neural_network",""],["perceptron",""],["setup",""],["utils",""]]});

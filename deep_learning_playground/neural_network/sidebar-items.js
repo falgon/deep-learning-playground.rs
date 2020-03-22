@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["activate_functions",""]],"struct":[["NeuralNetwork",""]]});

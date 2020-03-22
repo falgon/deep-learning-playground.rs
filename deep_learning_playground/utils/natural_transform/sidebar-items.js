@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["opt_to_failure","`opt_to_failure` is a natural transformation that convers `Option<...>` to `Result<..., Error>`."],["to_failure","`to_failure` is a natural transformation that convers `Result<T, E>` to `Result<T, Error>`."],["to_io","`failure_to_io` is a natural transformation that convers `Result<T, E>` to `std::io::Result<T>`."]]});

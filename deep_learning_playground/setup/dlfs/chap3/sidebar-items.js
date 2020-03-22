@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["load_trained_params","`load_trained_params` loads trained parameters from pickle (oreilly-japan/deep-learning-from-scratch/ch03/sample_weight.pkl). It requires some python packages. E.g. python3-dev, python-dev (On Ubuntu 18.04) and `numpy`."]],"struct":[["Chap3Param","`Chap3Param` is data structure that has weight matrixes and bias matrixes."]]});

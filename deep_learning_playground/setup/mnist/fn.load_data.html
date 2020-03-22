@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `load_data` fn in crate `deep_learning_playground`."><meta name="keywords" content="rust, rustlang, rust-lang, load_data"><title>deep_learning_playground::setup::mnist::load_data - Rust</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"                  integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"    integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\(", right: "\\)", display: false},
+                {left: "$", right: "$", display: false},
+                {left: "\\[", right: "\\]", display: true}
+            ]
+        });
+    });
+</script>
+
+<style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc fn"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../deep_learning_playground/index.html'><div class='logo-container'><img src='../../../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><p class='location'><a href='../../index.html'>deep_learning_playground</a>::<wbr><a href='../index.html'>setup</a>::<wbr><a href='index.html'>mnist</a></p><script>window.sidebarCurrent = {name: 'load_data', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../../src/deep_learning_playground/setup/mnist.rs.html#128-213' title='goto source code'>[src]</a></span><span class='in-band'>Function <a href='../../index.html'>deep_learning_playground</a>::<wbr><a href='../index.html'>setup</a>::<wbr><a href='index.html'>mnist</a>::<wbr><a class="fn" href=''>load_data</a></span></h1><pre class='rust fn'>pub fn load_data(<br>&nbsp;&nbsp;&nbsp;&nbsp;dataset_key: <a class="struct" href="../../../deep_learning_playground/setup/mnist/struct.DatasetKey.html" title="struct deep_learning_playground::setup::mnist::DatasetKey">DatasetKey</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;normalize: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a><br>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/std/io/error/type.Result.html" title="type std::io::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../../deep_learning_playground/setup/mnist/struct.MnistImage.html" title="struct deep_learning_playground::setup::mnist::MnistImage">MnistImage</a>&gt;&gt;</pre><div class='docblock'><p>Loading MNIST Data (<a href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a>).
+If the following files are not found in the .mnist directory of the execution path,
+download them from the database and decode the data.</p>
+<ul>
+<li>train-images-idx3-ubyte.gz:  training set images (9912422 bytes)</li>
+<li>train-labels-idx1-ubyte.gz:  training set labels (28881 bytes)</li>
+<li>t10k-images-idx3-ubyte.gz:   test set images (1648877 bytes)</li>
+<li>t10k-labels-idx1-ubyte.gz:   test set labels (4542 bytes)</li>
+</ul>
+<p>If they existed, read that file and decode the data.</p>
+<h1 id="arguments" class="section-header"><a href="#arguments">Arguments</a></h1>
+<ul>
+<li><code>dataset_key</code> - <code>train_dataset()</code> or <code>test_dataset()</code>.</li>
+<li><code>normalize</code> - Flag that determines whether the image is normalized between 0.0 and 1.0.</li>
+</ul>
+</div></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../../";window.currentCrate = "deep_learning_playground";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script defer src="../../../search-index.js"></script></body></html>
