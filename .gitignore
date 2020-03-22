@@ -2,3 +2,4 @@
 **/*.rs.bk
 .weight_data
 .mnist
+*.swp

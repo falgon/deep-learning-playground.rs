@@ -47,7 +47,7 @@ pub fn rectified_linear_unit<T: Float>() -> Box<dyn Fn(Array2<T>) -> Array2<T>> 
 /// Thus \\(C'=x_{\text{max}}\\) where \\(^\forall x_i, ^\exists x_{\text{max}}\in\boldsymbol{x}\\) s.t. \\(x_{\text{max}}\geq x_i\\).
 pub fn softmax<T: Float>() -> Box<dyn Fn(Array2<T>) -> Array2<T>> {
     Box::new(|x| -> Array2<T> {
-        let max: T = *x.max().unwrap(); 
+        let max: T = *x.max().unwrap();
         let sum: T = x.fold(T::zero(), |acc, val| acc + (*val - max).exp()); // Subtract the maximum value to prevent overflow (this is the equivalent calculation as explained above)
         x.map(|val| (*val - max).exp() / sum)
     })
