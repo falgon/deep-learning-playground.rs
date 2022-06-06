@@ -14,7 +14,7 @@ ndarray-stats = "0.3"
 quote = "1.0.2"
 failure = "0.1.6"
 reqwest = "0.10"
-tokio = { version = "0.2", features = ["full"] }
+tokio = { version = "1.8", features = ["full"] }
 futures = "0.3"
 bytes = "0.5"
 libflate = "0.1"
